@@ -5,7 +5,7 @@ ARG VER_ALPINE=3.15
 FROM "doocs/md:$VER_APP-assets" AS Assets
 
 FROM "golang:$VER_GOLANG" AS GoBuilder
-COPY --from=Assets /app/dist /app/assets
+COPY --from=Assets /app/* /app/assets/
 COPY server/main.go /app
 RUN apk add git bash gcc musl-dev upx
 WORKDIR /app

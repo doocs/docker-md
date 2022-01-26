@@ -14,7 +14,7 @@ func main() {
 	mutex := http.NewServeMux()
 	md, _ := fs.Sub(assets, "assets")
 	mutex.Handle("/", http.FileServer(http.FS(md)))
-	err := http.ListenAndServe(":8080", mutex)
+	err := http.ListenAndServe(":80", mutex)
 	if err != nil {
 		log.Fatal(err)
 	}
