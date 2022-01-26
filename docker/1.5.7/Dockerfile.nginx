@@ -1,0 +1,8 @@
+ARG VER_ASSET=1.5.7
+ARG VER_NGX=1.21.6-alpine
+
+FROM "soulteary/doocs-md:$VER_ASSET" AS Assets
+
+FROM "nginx:$VER_NGX"
+LABEL MAINTAINER soulteary<soulteary@gmail.com>
+COPY --from=Assets /app/dist /usr/share/nginx/html
