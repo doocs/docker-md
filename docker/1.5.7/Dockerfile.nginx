@@ -1,7 +1,7 @@
-ARG VER_ASSET=1.5.7
+ARG VER_APP=1.5.7
 ARG VER_NGX=1.21.6-alpine
 
-FROM "soulteary/doocs-md:$VER_ASSET" AS Assets
+FROM "doocs/md:$VER_APP-assets" AS Assets
 
 FROM "nginx:$VER_NGX"
 LABEL MAINTAINER soulteary<soulteary@gmail.com>

@@ -1,8 +1,8 @@
-ARG VER_ASSET=1.5.7
+ARG VER_APP=1.5.7
 ARG VER_GOLANG=1.17.6-alpine3.15
 ARG VER_ALPINE=3.15
 
-FROM "soulteary/doocs-md:$VER_ASSET" AS Assets
+FROM "doocs/md:$VER_APP-assets" AS Assets
 
 FROM "golang:$VER_GOLANG" AS GoBuilder
 COPY --from=Assets /app/dist /app/assets
