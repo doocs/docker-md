@@ -2,7 +2,6 @@ ARG VER_APP=1.5.7
 ARG VER_NGX=1.21.6-alpine
 
 FROM "doocs/md:$VER_APP-assets" AS Assets
-
 FROM "nginx:$VER_NGX"
 LABEL MAINTAINER soulteary<soulteary@gmail.com>
-COPY --from=Assets /app/dist /usr/share/nginx/html
+COPY --from=Assets /app/* /usr/share/nginx/html
