@@ -5,7 +5,7 @@ REPO_NAME='doocs/md'
 
 for app_ver in $RELEASE_DIR/*; do
 
-    if [ -f "$app_ver/Dockerfile.base" ]; then
+    if [ -f "$app_ver/Dockerfile.nginx" ]; then
 
         tag=$(echo $app_ver | cut -b 10-);
         echo "Build: $tag";
