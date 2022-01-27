@@ -1,0 +1,15 @@
+FROM node:17-alpine3.14 AS Builder
+ENV LANG en_US.UTF-8
+ENV LANGUAGE en_US.UTF-8
+ENV LC_ALL=en_US.UTF-8
+RUN apk add curl
+RUN curl -L "https://github.com/doocs/md/archive/refs/heads/main.zip" -o "main.zip" && unzip "main.zip" && mv "md-main" /app
+WORKDIR /app
+COPY ./patch/vue.config.js /app/vue.config.js
+COPY ./patch/mm.config.js /app/mm/mm.config.js
+ENV NODE_OPTIONS=--openssl-legacy-provider
+RUN npm i -g cnpm --registry=https://registry.npmjs.org/ && cnpm i && npm run build
+
+FROM scratch
+LABEL MAINTAINER soulteary<soulteary@gmail.com>
+COPY --from=Builder /app/dist /app/assets
