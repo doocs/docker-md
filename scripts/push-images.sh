@@ -9,17 +9,17 @@ for app_ver in $RELEASE_DIR/*; do
 
     if [ -f "$app_ver/Dockerfile.base" ]; then
         # 推送构建产物，方便其他的用户和爱好者进行二次封装
-        docker push "$REPO_NAME:${VER_APP}-assets"
+        docker push $REPO_NAME:$tag-assets
     fi
 
     if [ -f "$app_ver/Dockerfile.standalone" ]; then
         # 推送单个二进制的镜像
-        docker push "$REPO_NAME:${VER_APP}"
+        docker push $REPO_NAME:$tag
     fi
 
     if [ -f "$app_ver/Dockerfile.nginx" ]; then
         # 推送使用 Nginx 的镜像
-        docker push "$REPO_NAME:${VER_APP}-nginx"
+        docker push $REPO_NAME:$tag-nginx
     fi
 
 done
