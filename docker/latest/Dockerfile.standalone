@@ -15,4 +15,5 @@ RUN go build -ldflags "-w -s" -o md main.go && \
 FROM "alpine:$VER_ALPINE"
 LABEL MAINTAINER soulteary<soulteary@gmail.com>
 COPY --from=GoBuilder /app/md.minify /bin/md
+EXPOSE 80
 CMD ["md"]
