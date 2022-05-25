@@ -7,6 +7,7 @@
 ```bash
 ├── docker    镜像文件目录（包含最新分支和 1.5.7 之后的版本）
 │   ├── 1.5.7
+│   ├── 1.5.8
 │   └── latest
 └── scripts                      构建镜像使用的脚本
     ├── build-base-image.sh      构建基础镜像
@@ -22,7 +23,7 @@
 
 ```bash
 docker run --rm -it -p 8080:80 doocs/md:latest
-docker run --rm -it -p 8080:80 doocs/md:1.5.7
+docker run --rm -it -p 8080:80 doocs/md:1.5.8
 ```
 
 ### Nginx 镜像版
@@ -31,4 +32,4 @@ docker run --rm -it -p 8080:80 doocs/md:1.5.7
 
 ```bash
 docker run --rm -it -p 8080:80 doocs/md:latest-nginx
-docker run --rm -it -p 8080:80 doocs/md:1.5.7-nginx
+docker run --rm -it -p 8080:80 doocs/md:1.5.8-nginx
