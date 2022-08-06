@@ -10,7 +10,7 @@ WORKDIR /app
 COPY ./patch/vue.config.js /app/vue.config.js
 COPY ./patch/mm.config.js /app/mm/mm.config.js
 ENV NODE_OPTIONS=--openssl-legacy-provider
-RUN npm i -g cnpm --registry=https://registry.npmjs.org/ && cnpm i && npm run build
+RUN npm i && npm run build
 
 FROM scratch
 LABEL MAINTAINER soulteary<soulteary@gmail.com>
