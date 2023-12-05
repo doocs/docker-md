@@ -9,6 +9,7 @@
 │   ├── 1.5.7
 │   ├── 1.5.8
 │   ├── 1.5.9
+│   ├── 1.6.0
 │   └── latest
 └── scripts                      构建镜像使用的脚本
     ├── build-base-image.sh      构建基础镜像
@@ -24,7 +25,7 @@
 
 ```bash
 docker run --rm -it -p 8080:80 doocs/md:latest
-docker run --rm -it -p 8080:80 doocs/md:1.5.9
+docker run --rm -it -p 8080:80 doocs/md:1.6.0
 ```
 
 ### Nginx 镜像版
@@ -33,5 +34,5 @@ docker run --rm -it -p 8080:80 doocs/md:1.5.9
 
 ```bash
 docker run --rm -it -p 8080:80 doocs/md:latest-nginx
-docker run --rm -it -p 8080:80 doocs/md:1.5.9-nginx
+docker run --rm -it -p 8080:80 doocs/md:1.6.0-nginx
 ```
