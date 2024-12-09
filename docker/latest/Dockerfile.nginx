@@ -1,6 +1,6 @@
-ARG VER_NGX=1.21.6-alpine
+ARG VER_NGX="1.21.6-alpine"
 
-FROM "doocs/md:latest-assets" AS Assets
+FROM "doocs/md:latest-assets" AS assets
 FROM "nginx:$VER_NGX"
-LABEL MAINTAINER soulteary<soulteary@gmail.com>
-COPY --from=Assets /app/* /usr/share/nginx/html
+LABEL MAINTAINER="ylb<contact@yanglibin.info>"
+COPY --from=assets /app/* /usr/share/nginx/html
