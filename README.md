@@ -1,5 +1,7 @@
 # Docker MD
 
+[![docker](https://img.shields.io/badge/docker-latest-42cc23?style=flat-square&labelColor=564341)](https://hub.docker.com/r/doocs/md)
+
 轻量的微信编辑器 [doocs/md](https://github.com/doocs/md) 的轻量容器镜像。
 
 # 目录结构

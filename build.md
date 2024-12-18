@@ -15,15 +15,15 @@ docker login -u <username> -p <password>
 分别执行以下三个命令：
 
 ```bash
-bash scripts/build-base-image.sh 
+bash scripts/build-base-image.sh
 ```
 
 ```bash
-bash scripts/build-nginx.sh 
+bash scripts/build-nginx.sh
 ```
 
 ```bash
-bash scripts/build-standalone.sh 
+bash scripts/build-standalone.sh
 ```
 
 ### 2. 推送镜像
