@@ -22,4 +22,9 @@ for app_ver in $RELEASE_DIR/*; do
         docker push $REPO_NAME:$tag-nginx
     fi
 
+    if [ -f "$app_ver/Dockerfile.static" ]; then
+        # 推送使用 lipanski/docker-static-website 的镜像
+        docker push $REPO_NAME:$tag-static
+    fi
+
 done
