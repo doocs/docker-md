@@ -13,7 +13,8 @@
 └── scripts                      构建镜像使用的脚本
     ├── build-base-image.sh      构建基础镜像
     ├── build-nginx.sh           构建基于 Nginx 的镜像
-    └── build-standalone.sh      构建独立二进制版本
+    ├── build-standalone.sh      构建独立二进制版本
+    └── build-multiarch.sh       构建多架构镜像(linux/amd64,linux/arm64)
 ```
 
 ## 镜像列表
