@@ -19,6 +19,7 @@
     ├── build-base-image.sh      构建基础镜像
     ├── build-nginx.sh           构建基于 Nginx 的镜像
     ├── build-standalone.sh      构建独立二进制版本
+    ├── build-static.sh          构建静态镜像
     └── build-multiarch.sh       构建多架构镜像(linux/amd64,linux/arm64)
 ```
 
@@ -44,6 +45,7 @@ docker run --rm -it -p 8080:80 doocs/md:1.6.0
 
 ```bash
 docker run --rm -it -p 8080:80 doocs/md:latest-nginx
+docker run --rm -it -p 8080:80 doocs/md:2.0.4-nginx
 docker run --rm -it -p 8080:80 doocs/md:2.0.3-nginx
 docker run --rm -it -p 8080:80 doocs/md:2.0.2-nginx
 docker run --rm -it -p 8080:80 doocs/md:2.0.1-nginx
