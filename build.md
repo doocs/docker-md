@@ -12,7 +12,7 @@ docker login -u <username> -p <password>
 
 ### 1. 构建镜像
 
-分别执行以下三个命令：
+分别执行以下四个命令：
 
 ```bash
 bash scripts/build-base-image.sh
@@ -24,6 +24,10 @@ bash scripts/build-nginx.sh
 
 ```bash
 bash scripts/build-standalone.sh
+```
+
+```bash
+bash scripts/build-static.sh
 ```
 
 ### 2. 推送镜像
