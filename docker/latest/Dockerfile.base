@@ -5,10 +5,10 @@ ENV LC_ALL="en_US.UTF-8"
 RUN apk add --no-cache curl unzip
 RUN curl -L "https://github.com/doocs/md/archive/refs/heads/main.zip" -o "main.zip" && unzip "main.zip" && mv "md-main" /app
 WORKDIR /app
-COPY ./patch/vite.config.ts /app/vite.config.ts
+RUN npm install -g pnpm
 ENV NODE_OPTIONS="--openssl-legacy-provider"
-RUN npm i && npm run build
+RUN pnpm install && pnpm web build:h5-netlify
 
 FROM scratch
 LABEL MAINTAINER="ylb<contact@yanglibin.info>"
-COPY --from=builder /app/dist /app/assets
+COPY --from=builder /app/apps/web/dist /app/assets
