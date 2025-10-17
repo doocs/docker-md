@@ -4,7 +4,17 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'docker/**'
+      - 'scripts/**'
+      - '.github/workflows/docker.yml'
   workflow_dispatch:
+    inputs:
+      versions:
+        description: '要构建的版本（空格分隔，如: 2.1.0 latest）留空则构建最新3个版本+latest'
+        required: false
+        type: string
+        default: ''
 
 jobs:
   build:
@@ -26,6 +36,8 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
 
     - name: Build and push multi-arch images
+      env:
+        BUILD_VERSIONS: ${{ github.event.inputs.versions }}
       run: |
         chmod +x scripts/build-multiarch.sh
         bash scripts/build-multiarch.sh

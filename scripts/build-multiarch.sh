@@ -6,13 +6,22 @@ RELEASE_DIR="./docker"
 REPO_NAME="doocs/md"
 PLATFORMS="linux/amd64,linux/arm64"
 
+# 可以通过环境变量指定要构建的版本，用空格分隔
+# 例如: BUILD_VERSIONS="2.1.0 latest" ./build-multiarch.sh
+# 如果不指定，默认只构建最新的 3 个版本
+if [ -z "${BUILD_VERSIONS:-}" ]; then
+    BUILD_VERSIONS=$(ls -1 "$RELEASE_DIR" | grep -E '^[0-9]+\.[0-9]+\.[0-9]+$|^latest$' | sort -V | tail -3)
+    BUILD_VERSIONS="$BUILD_VERSIONS latest"
+fi
+
 echo "🔧 Multi-arch Docker build started..."
 echo "📁 Scanning directory: $RELEASE_DIR"
+echo "🎯 Versions to build: $BUILD_VERSIONS"
 
-for app_ver in "$RELEASE_DIR"/*; do
+for tag in $BUILD_VERSIONS; do
+    app_ver="$RELEASE_DIR/$tag"
     [ -d "$app_ver" ] || continue
 
-    tag=$(basename "$app_ver")
     env_file="$app_ver/.env"
 
     if [ ! -f "$env_file" ]; then
