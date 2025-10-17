@@ -1,0 +1,16 @@
+FROM --platform=$BUILDPLATFORM node:20-alpine3.19 AS builder
+ENV LANG="en_US.UTF-8"
+ENV LANGUAGE="en_US.UTF-8"
+ENV LC_ALL="en_US.UTF-8"
+RUN apk add --no-cache curl unzip
+ARG VER_APP 2.1.0
+ENV VER $VER_APP
+RUN curl -L "https://github.com/doocs/md/archive/refs/tags/v$VER.zip" -o "v$VER.zip" && unzip "v$VER.zip" && mv "md-$VER" /app
+WORKDIR /app
+RUN npm install -g pnpm
+ENV NODE_OPTIONS="--openssl-legacy-provider"
+RUN pnpm install && pnpm web build:h5-netlify
+
+FROM scratch
+LABEL MAINTAINER="ylb<contact@yanglibin.info>"
+COPY --from=builder /app/apps/web/dist /app/assets
