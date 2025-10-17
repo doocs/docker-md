@@ -1,13 +1,6 @@
 name: Build and Push Docker Images
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - 'docker/**'
-      - 'scripts/**'
-      - '.github/workflows/docker.yml'
   workflow_dispatch:
     inputs:
       versions:
@@ -15,6 +8,10 @@ on:
         required: false
         type: string
         default: ''
+
+concurrency:
+  group: docker-build
+  cancel-in-progress: true
 
 jobs:
   build:
